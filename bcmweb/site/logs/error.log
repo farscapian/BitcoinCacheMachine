@@ -1,0 +1,1 @@
+2020/07/05 18:38:30 [emerg] 1#1: directive "keepalive_timeout" is not terminated by ";" in /etc/nginx/nginx.conf:40

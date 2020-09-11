@@ -49,8 +49,3 @@ if [[ -n $BCM_CACHE_DIR ]]; then
     BCM_CACHE_DIR="$BCM_CACHE_DIR"
 fi
 export BCM_CACHE_DIR="$BCM_CACHE_DIR"
-
-if [[ -z $ ]]; then
-    echo "ERROR: BCM_CACHE_DIR IS not defined. Please set your environment."
-    exit
-fi

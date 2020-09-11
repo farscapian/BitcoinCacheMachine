@@ -1,0 +1,45 @@
+#!/bin/bash
+
+# Environment Variables for the scripts.
+export ZERONET_DIR="$HOME/zeronet"
+export DATA_DIR="$ZERONET_DIR/data"
+export LOG_DIR="$ZERONET_DIR/logs"
+export PLUGINS_DIR="$ZERONET_DIR/plugins"
+export TOR_DIR="$ZERONET_DIR/tor"
+export BCM_ZERONET_ADDRESS="1HeLLo4uzjaLetFx6NH3PMwFP3qbRbTf3D"
+export BCM_ZERONET_PATH="$DATA_DIR/$BCM_ZERONET_ADDRESS"
+export VERSION="0.0.1"
+export SITE_NAME="bcmweb"
+export SITE_PATH="$(pwd)/site/jekyll_site"
+
+#export DOMAIN_NAME="www.bitcoincachemachine.org"
+
+
+#vps variables
+export VPS_NAME="zeronet"
+export AWS_REGION="us-east-1"
+export AWS_AMI_ID="ami-04e7b4117bb0488e4"
+
+
+#zeronet variables
+export VPS_ZERONET_CONTAINER="zeronet_vps_docker"
+export VPS_ZERONET_DATA_DIR="/home/ubuntu/zeronet/data"
+export VPS_ZERONET_LOG_DIR="/home/ubuntu/zeronet/log"
+#export VPS_ZERONET_DIR="/home/ubuntu/zeronet"
+export VPS_ZERONET_DIR="~/zeronet"
+export ZERONET_CONF="zeronet.conf"
+export ZERONET_BASE_DOCKER_IMAGE="nofish/zeronet:latest"
+
+#nginx variables
+export VPS_NGINX_CONTAINER="nginx_vps_docker"
+export VPS_NGINX_DIR="/home/ubuntu/nginx"
+export VPS_NGINX_LOG_DIR="/home/ubuntu/nginx/log"
+export VPS_USER_NAME="ubuntu"
+export VPS_NGINX_SITES_AVAIL_DIR="/home/ubuntu/nginx/sites-available"
+export VPS_NGINX_SITES_ENABLED_DIR="/home/ubuntu/nginx/sites-enabled"
+export NGINX_PROXY_CONF="zeronet_nginx.conf"
+#export NGINX_PROXY_CONF="nginx.conf"
+
+
+
+#ami instance finder: https://cloud-images.ubuntu.com/locator/ec2/

@@ -98,6 +98,10 @@ fi
 BCM_GIT_DIR="$(pwd)"
 export BCM_GIT_DIR="$BCM_GIT_DIR"
 
+# we need to ensure /snap/bin is in our PATH so subsequent commands to LXC succeed.
+PATH="$PATH:/snap/bin"
+export PATH="$PATH"
+
 # Let's make sure the .ssh folder exists. This will hold known SSH BCM hosts
 # SSH authentication to remote hosts uses the trezor
 mkdir -p "$HOME/.ssh"
@@ -217,13 +221,16 @@ function createLoopDevice () {
 }
 
 if [[ $STORAGE_STRATEGY = *configure* ]]; then
+    # this code block executes when there are NO underlying .img files created and mounted as loop devices.
     mkdir -p "$DISKS_DIR"
     createLoopDevice "$SD_PATH" sd "$SD_SIZE"
     createLoopDevice "$SSD_PATH" ssd "$SSD_SIZE"
     createLoopDevice "$HDD_PATH" hdd "$HDD_SIZE"
     elif [[ $STORAGE_STRATEGY = *mapped* ]]; then
-    echo "TODO - figure out what we need to do here, if anything"
+    # TODO we've got to create our storage back-ends
+    # this code block occurs when the underlying img files exist (e.g., inside a Type-1 VM)
     sleep 5
+    exit
 fi
 
 # This creates LXC storage pools for each of teh

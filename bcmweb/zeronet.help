@@ -1,0 +1,184 @@
+~ # python3 zeronet.py --help
+- Starting ZeroNet...
+- Libsecpk256k1 loaded: CompiledLib in 0.023s
+usage: zeronet.py [-h] [--verbose] [--debug] [--silent] [--debug_socket] [--merge_media] [--batch] [--start_dir path] [--config_file path] [--data_dir path]
+                  [--console_log_level {default,DEBUG,INFO,ERROR,off}] [--log_dir path] [--log_level {DEBUG,INFO,ERROR,off}] [--log_rotate {hourly,daily,weekly,off}]
+                  [--log_rotate_backup_count LOG_ROTATE_BACKUP_COUNT] [--language language] [--ui_ip ip] [--ui_port port] [--ui_restrict [ip [ip ...]]] [--ui_host [host [host ...]]]
+                  [--ui_trans_proxy] [--open_browser [browser_name]] [--homepage address] [--updatesite address] [--dist_type DIST_TYPE] [--size_limit limit]
+                  [--file_size_limit limit] [--connected_limit connected_limit] [--global_connected_limit global_connected_limit] [--workers workers] [--fileserver_ip ip]
+                  [--fileserver_port port] [--fileserver_port_range port] [--fileserver_ip_type {ipv4,ipv6,dual}] [--ip_local [ip [ip ...]]] [--ip_external [ip [ip ...]]]
+                  [--offline] [--disable_udp] [--proxy ip:port] [--bind ip] [--trackers [protocol://address [protocol://address ...]]] [--trackers_file [path [path ...]]]
+                  [--trackers_proxy TRACKERS_PROXY] [--use_libsecp256k1 {True,False}] [--use_openssl {True,False}] [--openssl_lib_file path] [--openssl_bin_file path] [--disable_db]
+                  [--disable_encryption] [--force_encryption] [--disable_sslcompression {True,False}] [--keep_ssl_cert] [--max_files_opened limit] [--stack_size thread_stack_size]
+                  [--use_tempfiles {True,False}] [--stream_downloads {True,False}] [--msgpack_purepython {True,False}] [--fix_float_decimals {True,False}]
+                  [--db_mode {speed,security}] [--threads_fs_read THREADS_FS_READ] [--threads_fs_write THREADS_FS_WRITE] [--threads_crypt THREADS_CRYPT] [--threads_db THREADS_DB]
+                  [--download_optional {manual,auto}] [--coffeescript_compiler executable_path] [--tor {disable,enable,always}] [--tor_controller ip:port] [--tor_proxy ip:port]
+                  [--tor_password password] [--tor_use_bridges] [--tor_hs_limit limit] [--tor_hs_port limit] [--version] [--end] [--bit_resolver address]
+                  [--optional_limit GB or free space %] [--optional_limit_exclude_minsize MB] [--autodownload_bigfile_size_limit MB] [--bigfile_size_limit MB]
+                  [--working_shared_trackers_limit limit] [--broadcast_port port]
+                  {main,siteCreate,siteNeedFile,siteDownload,siteSign,sitePublish,siteVerify,siteCmd,dbRebuild,dbQuery,peerPing,peerGetFile,peerCmd,cryptSign,cryptVerify,cryptGetPrivatekey,getConfig,testConnection,testAnnounce,test}
+                  ...
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --verbose             More detailed logging (default: False)
+  --debug               Debug mode (default: False)
+  --silent              Only log errors to terminal output (default: False)
+  --debug_socket        Debug socket connections (default: False)
+  --merge_media         Merge all.js and all.css (default: False)
+  --batch               Batch mode (No interactive input for commands) (default: False)
+  --start_dir path      Path of working dir for variable content (data, log, .conf) (default: .)
+  --config_file path    Path of config file (default: ./zeronet.conf)
+  --data_dir path       Path of data directory (default: ./data)
+  --console_log_level {default,DEBUG,INFO,ERROR,off}
+                        Level of logging to console (default: default)
+  --log_dir path        Path of logging directory (default: ./log)
+  --log_level {DEBUG,INFO,ERROR,off}
+                        Level of logging to file (default: DEBUG)
+  --log_rotate {hourly,daily,weekly,off}
+                        Log rotate interval (default: daily)
+  --log_rotate_backup_count LOG_ROTATE_BACKUP_COUNT
+                        Log rotate backup count (default: 5)
+  --language language   Web interface language (default: en)
+  --ui_ip ip            Web interface bind address (default: 127.0.0.1)
+  --ui_port port        Web interface bind port (default: 43110)
+  --ui_restrict [ip [ip ...]]
+                        Restrict web access (default: False)
+  --ui_host [host [host ...]]
+                        Allow access using this hosts (default: None)
+  --ui_trans_proxy      Allow access using a transparent proxy (default: False)
+  --open_browser [browser_name]
+                        Open homepage in web browser automatically (default: None)
+  --homepage address    Web interface Homepage (default: 1HeLLo4uzjaLetFx6NH3PMwFP3qbRbTf3D)
+  --updatesite address  Source code update site (default: 1uPDaT3uSyWAPdCv1WkMb5hBQjWSNNACf)
+  --dist_type DIST_TYPE
+                        Type of installed distribution (default: source)
+  --size_limit limit    Default site size limit in MB (default: 10)
+  --file_size_limit limit
+                        Maximum per file size limit in MB (default: 10)
+  --connected_limit connected_limit
+                        Max connected peer per site (default: 8)
+  --global_connected_limit global_connected_limit
+                        Max connections (default: 512)
+  --workers workers     Download workers per site (default: 5)
+  --fileserver_ip ip    FileServer bind address (default: *)
+  --fileserver_port port
+                        FileServer bind port (0: randomize) (default: 0)
+  --fileserver_port_range port
+                        FileServer randomization range (default: 10000-40000)
+  --fileserver_ip_type {ipv4,ipv6,dual}
+                        FileServer ip type (default: dual)
+  --ip_local [ip [ip ...]]
+                        My local ips (default: ['127.0.0.1', '::1'])
+  --ip_external [ip [ip ...]]
+                        Set reported external ip (tested on start if None) (default: None)
+  --offline             Disable network communication (default: False)
+  --disable_udp         Disable UDP connections (default: False)
+  --proxy ip:port       Socks proxy address (default: None)
+  --bind ip             Bind outgoing sockets to this address (default: None)
+  --trackers [protocol://address [protocol://address ...]]
+                        Bootstraping torrent trackers (default: ['zero://boot3rdez4rzn36x.onion:15441',
+                        'zero://zero.booth.moe#f36ca555bee6ba216b14d10f38c16f7769ff064e0e37d887603548cc2e64191d:443', 'udp://tracker.coppersurfer.tk:6969',
+                        'udp://104.238.198.186:8000', 'udp://retracker.akado-ural.ru:80', 'http://h4.trakx.nibba.trade:80/announce', 'http://open.acgnxtracker.com:80/announce',
+                        'http://tracker.bt4g.com:2095/announce', 'zero://2602:ffc5::c5b2:5360:26312'])
+  --trackers_file [path [path ...]]
+                        Load torrent trackers dynamically from a file (default: None)
+  --trackers_proxy TRACKERS_PROXY
+                        Force use proxy to connect to trackers (disable, tor, ip:port) (default: disable)
+  --use_libsecp256k1 {True,False}
+                        Use Libsecp256k1 liblary for speedup (default: True)
+  --use_openssl {True,False}
+                        Use OpenSSL liblary for speedup (default: True)
+  --openssl_lib_file path
+                        Path for OpenSSL library file (default: detect)
+  --openssl_bin_file path
+                        Path for OpenSSL binary file (default: detect)
+  --disable_db          Disable database updating (default: False)
+  --disable_encryption  Disable connection encryption (default: False)
+  --force_encryption    Enforce encryption to all peer connections (default: False)
+  --disable_sslcompression {True,False}
+                        Disable SSL compression to save memory (default: True)
+  --keep_ssl_cert       Disable new SSL cert generation on startup (default: False)
+  --max_files_opened limit
+                        Change maximum opened files allowed by OS to this value on startup (default: 2048)
+  --stack_size thread_stack_size
+                        Change thread stack size (default: None)
+  --use_tempfiles {True,False}
+                        Use temporary files when downloading (experimental) (default: False)
+  --stream_downloads {True,False}
+                        Stream download directly to files (experimental) (default: False)
+  --msgpack_purepython {True,False}
+                        Use less memory, but a bit more CPU power (default: False)
+  --fix_float_decimals {True,False}
+                        Fix content.json modification date float precision on verification (default: False)
+  --db_mode {speed,security}
+  --threads_fs_read THREADS_FS_READ
+                        Number of threads for file read operations (default: 1)
+  --threads_fs_write THREADS_FS_WRITE
+                        Number of threads for file write operations (default: 1)
+  --threads_crypt THREADS_CRYPT
+                        Number of threads for cryptographic operations (default: 2)
+  --threads_db THREADS_DB
+                        Number of threads for database operations (default: 1)
+  --download_optional {manual,auto}
+  --coffeescript_compiler executable_path
+                        Coffeescript compiler for developing (default: None)
+  --tor {disable,enable,always}
+                        enable: Use only for Tor peers, always: Use Tor for every connection (default: enable)
+  --tor_controller ip:port
+                        Tor controller address (default: 127.0.0.1:9051)
+  --tor_proxy ip:port   Tor proxy address (default: 127.0.0.1:9050)
+  --tor_password password
+                        Tor controller password (default: None)
+  --tor_use_bridges     Use obfuscated bridge relays to avoid Tor block (default: False)
+  --tor_hs_limit limit  Maximum number of hidden services in Tor always mode (default: 10)
+  --tor_hs_port limit   Hidden service port in Tor always mode (default: 15441)
+  --version             show program's version number and exit
+  --end                 Stop multi value argument parsing (default: False)
+
+Action to perform:
+  {main,siteCreate,siteNeedFile,siteDownload,siteSign,sitePublish,siteVerify,siteCmd,dbRebuild,dbQuery,peerPing,peerGetFile,peerCmd,cryptSign,cryptVerify,cryptGetPrivatekey,getConfig,testConnection,testAnnounce,test}
+    main                Start UiServer and FileServer (default)
+    siteCreate          Create a new site
+    siteNeedFile        Get a file from site
+    siteDownload        Download a new site
+    siteSign            Update and sign content.json: address [privatekey]
+    sitePublish         Publish site to other peers: address
+    siteVerify          Verify site files using sha512: address
+    siteCmd             Execute a ZeroFrame API command on a site
+    dbRebuild           Rebuild site database cache
+    dbQuery             Query site sql cache
+    peerPing            Send Ping command to peer
+    peerGetFile         Request and print a file content from peer
+    peerCmd             Request and print a file content from peer
+    cryptSign           Sign message using Bitcoin private key
+    cryptVerify         Verify message using Bitcoin public address
+    cryptGetPrivatekey  Generate a privatekey from master seed
+    getConfig           Return json-encoded info
+    testConnection      Testing
+    testAnnounce        Testing
+    test                Run a test
+
+Zeroname plugin:
+  --bit_resolver address
+                        ZeroNet site to resolve .bit domains (default: 1Name2NXVi1RDPDgf5617UoW7xA6YrhM9F)
+
+OptionalManager plugin:
+  --optional_limit GB or free space %
+                        Limit total size of optional files (default: 10%)
+  --optional_limit_exclude_minsize MB
+                        Exclude files larger than this limit from optional size limit calculation (default: 20)
+
+Bigfile plugin:
+  --autodownload_bigfile_size_limit MB
+                        Also download bigfiles smaller than this limit if help distribute option is checked (default: 10)
+  --bigfile_size_limit MB
+                        Maximum size of downloaded big files (default: False)
+
+AnnounceShare plugin:
+  --working_shared_trackers_limit limit
+                        Stop discovering new shared trackers after this number of shared trackers reached (default: 5)
+
+AnnounceLocal plugin:
+  --broadcast_port port
+                        UDP broadcasting port for local peer discovery (default: 1544)

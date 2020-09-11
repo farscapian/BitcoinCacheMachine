@@ -6,7 +6,7 @@ cd "$(dirname "$0")"
 source ./env
 
 # let's remove everything bcm related;
-BCM_VM_NAME="$BCM_VM_NAME" ./uninstall.sh --storage
+BCM_VM_NAME="$BCM_VM_NAME" ./uninstall.sh --storage --cache --lxd
 # --lxd --cache
 # --storage
 # --cache

@@ -1,0 +1,40 @@
+network:
+    version: 2
+    renderer: networkd
+    ethernets:
+      #LOWER_LEFT eno2 is untrusted outside
+      eno1:
+        dhcp4: true
+        dhcp6: false
+
+      # UPPER_LEFT eno2 is our MOST TRUSTED INTERFACE (where we listen for SSH)
+      eno2:
+        dhcp4: false
+        dhcp6: false
+        addresses: 
+          - 192.168.5.1/24
+          - 192.168.5.2/24
+          - 192.168.5.3/24
+          # 1. dedicated to default route for the subnet.
+          # 2. where we have the trusted sshd for the FW.
+          # 3. where we bind pihole for DHCP and DNS for LAN clients.
+  
+      # LOWER_RIGHT - UNTRUSTED_WIRELESS
+      eno3:
+        dhcp4: false
+        dhcp6: false
+        addresses:
+          - 192.168.10.1/24
+          - 192.168.10.3/24
+          # 1. dedicated to default route for the subnet.
+          # 3. where we bind pihole for DHCP and DNS for LAN clients.
+  
+      # UPPER_RIGHT - USED for DMZ -- PIHOLE provides DHCP and DNS (or perhaps put it backed by a whonix gateway)
+      eno4:
+        dhcp4: false
+        dhcp6: false
+        addresses:
+          - 192.168.20.1/24
+          - 192.168.20.3/24
+          # 1. dedicated to default route for the subnet.
+          # 2. where we bind pihole for DHCP and DNS for LAN clients.

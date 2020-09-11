@@ -90,7 +90,7 @@ rsync -rv "$HOME/.gnupg/" -e "ssh -i $SSH_PUBKEY_PATH -o 'StrictHostKeyChecking=
 ssh -i "$SSH_PUBKEY_PATH" "$FQSN" /home/ubuntu/bcm/install.sh --storage=mapped
 
 rsync -rv "$BCM_CACHE_DIR/lxc/" -e "ssh -i $SSH_PUBKEY_PATH -o 'StrictHostKeyChecking=accept-new'" "$FQSN:/home/ubuntu/.local/bcm/lxc"
-ssh -i "$SSH_PUBKEY_PATH" "$FQSN" -- bash -c "/home/ubuntu/bcm/project/bcm"
+ssh -i "$SSH_PUBKEY_PATH" "$FQSN" -- bash -c "/home/ubuntu/bcm/bcm"
 
 # # let's get the onion address and add it as a bcm-onion site. This is a management plane admin interface.
 # MGMT_PLANE_ONION_ADDRESS="$(multipass exec "$VM_NAME" -- sudo cat /var/bc`h/hostname)"

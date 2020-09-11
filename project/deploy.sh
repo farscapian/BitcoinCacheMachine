@@ -26,10 +26,10 @@ if ! lxc project list --format csv | grep -q "default (current)"; then
     lxc project switch default
 fi
 
-if ! lxc storage list --format csv | grep -q "bcm-"; then
-    echo "WARNING: The lxc storage pool 'bcm_root' doesn't exist. You may need to run 'sudo bash -c BCM_GIT_DIR/install.sh'."
-    exit
-fi
+# if ! lxc storage list --format csv | grep -q "bcm-"; then
+#     echo "WARNING: The lxc storage pool 'bcm_root' doesn't exist. You may need to run 'sudo bash -c BCM_GIT_DIR/install.sh'."
+#     exit
+# fi
 
 # We start by defining a LXC System Image to run our docker daemon's in.
 if ! lxc image list --format csv | grep -q "$LXC_BCM_BASE_IMAGE_NAME"; then
