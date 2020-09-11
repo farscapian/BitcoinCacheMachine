@@ -3,8 +3,17 @@
     "editor.cursorBlinking": "phase",
     "editor.cursorWidth": 3,
     "editor.formatOnSave": true,
-    "shellcheck.useWSL": false,
     "shellcheck.enable": true,
+    "shellcheck.enableQuickFix": true,
+    "shellcheck.run": "onType",
+    "shellcheck.executablePath": "shellcheck",
+    "shellcheck.customArgs": [],
+    "shellcheck.ignorePatterns": {},
+    "shellcheck.ignoreFileSchemes": [
+        "git",
+        "gitfs"
+    ],
+    "shellcheck.useWSL": false,
     "shellcheck.exclude": [
         1090
     ],
