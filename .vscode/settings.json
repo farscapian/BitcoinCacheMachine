@@ -15,7 +15,7 @@
     ],
     "shellcheck.useWSL": false,
     "shellcheck.exclude": [
-        1090
+        "1090"
     ],
     "terminal.integrated.fontFamily": "monospace",
     "peacock.color": "#029727",
